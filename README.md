@@ -152,7 +152,7 @@ The dashboard combines summary KPIs with detailed charts to help users move from
 
 ### Dashboard Preview
 
-![Olist Sales Dashboard](powerbi/olist_sales_dashboard.jpg)
+![Olist Sales Dashboard](olist_sales_dashboard.jpg)
 
 ## Key Findings
 
