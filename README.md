@@ -142,11 +142,11 @@ The Power BI dashboard was designed to provide an overview of sales performance 
 The dashboard includes:
 
 - **KPI cards:** Total Item Sales Value, Delivered Orders, Total Order Items, and Average Order Value.
+- **Product category slicer:** Allows users to filter relevant visuals by category.
 - **Monthly sales chart:** Examines changes in sales over time.
 - **Yearly sales chart:** Compares sales values across years.
 - **Product category chart:** Compares sales contributions across categories.
 - **Geographic map:** Displays sales distribution across Brazilian states.
-- **Product category slicer:** Allows users to filter relevant visuals by category.
 
 The dashboard combines summary KPIs with detailed charts to help users move from an overall view of performance to specific sales patterns.
 
