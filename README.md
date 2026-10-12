@@ -171,13 +171,11 @@ The reported sales figures represent item prices for delivered orders and exclud
 
 These recommendations are proposed areas for further investigation. Additional data and analysis would be needed to validate the opportunities and assess their potential business impact.
 
-### Interactive Power BI Dashboard
-
 ![Olist Sales Dashboard](olist_sales_dashboard.jpg)
 
 The interactive Power BI dashboard combines summary metrics, category comparisons, and geographic visualisation to make sales performance easier to explore. The dashboard file can be downloaded [here](https://drive.google.com/file/d/1S9vMOBnVeD-Jqpp__08A2FAXToGaAEJm/view?usp=sharing).
 
-Download the `.pbix` file and open it in Power BI Desktop to explore the interactive report. Access depends on the Google Drive sharing settings.
+Download the `.pbix` file and open it in Power BI Desktop to explore the interactive report.
 
 ## Project Workflow
 
