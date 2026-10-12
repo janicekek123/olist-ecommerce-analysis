@@ -1,19 +1,29 @@
 # Olist E-Commerce Sales Analysis
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Business Objectives](#business-objectives)
+- [Tools and Technologies](#tools-and-technologies)
+- [Dataset](#dataset)
+- [Technical Implementation](#technical-implementation)
+- [Executive Summary](#executive-summary)
+- [Project Workflow](#project-workflow)
+- [Author](#author)
+
 ## Project Overview
 
 This project analyses the Brazilian E-Commerce Public Dataset by Olist to understand sales performance and identify useful business insights.
 
-MySQL was used for data preparation, data quality checks, table joins, and sales analysis. Power BI Desktop was used to develop an interactive dashboard to present key performance indicators and explore sales trends across different business dimensions.
+MySQL was used for data preparation, data quality checks, table joins, and sales analysis. Power BI Desktop was used to develop an interactive dashboard to present key performance indicators (KPIs) and explore sales trends across different business dimensions.
 
-## Business Objectives
+## Business Questions
 
-- Analyse monthly and yearly sales trends.
-- Identify product categories with the highest and lowest sales values.
-- Examine sales performance alongside order volume and average order value.
-- Compare sales performance across Brazilian states.
-- Identify the top-performing product categories by item sales value.
-- Evaluate average order value across product categories.
+1. What is the overall sales performance of the Olist e-commerce business?
+2. How does total sales value change over time?
+3. Which product categories generate the highest and lowest sales values?
+4. How does average order value differ across product categories, and which categories have the highest and lowest average order values?
+5. Which Brazilian states generate the highest and lowest sales values?
 
 ## Tools and Technologies
 
@@ -27,32 +37,15 @@ MySQL was used for data preparation, data quality checks, table joins, and sales
 
 Five datasets were used in this project:
 
-| Dataset | Purpose |
-|---|---|
-| `olist_customers_dataset` | Customer information, including customer IDs and geographic details |
-| `olist_order_items_dataset` | Order items, product IDs, item prices, and freight values |
-| `olist_orders_dataset` | Order IDs, purchase dates, and order statuses |
-| `olist_products_dataset` | Product information and product category names |
-| `product_category_name_translation` | Translates product category names from Portuguese into English |
+| Dataset                             | Purpose                                                             |
+| ----------------------------------- | ------------------------------------------------------------------- |
+| `olist_customers_dataset`           | Customer information, including customer IDs and geographic details |
+| `olist_order_items_dataset`         | Order items, product IDs, item prices, and freight values           |
+| `olist_orders_dataset`              | Order IDs, purchase dates, and order statuses                       |
+| `olist_products_dataset`            | Product information and product category names                      |
+| `product_category_name_translation` | Translates product category names from Portuguese into English      |
 
 These datasets were joined using relevant identifiers to prepare the data for sales analysis.
-
-## Repository Structure
-
-```text
-olist-ecommerce-analysis/
-├── README.md
-├── sql/
-│   ├── README.md
-│   ├── 01_create_tables.sql
-│   ├── 02_import_orders.sql
-│   ├── 03_data_quality_checks.sql
-│   └── 04_sales_analysis.sql
-└── powerbi/
-    ├── README.md
-    ├── olist_sales_dashboard.jpg
-    └── [Power BI report .pbix file]
-```
 
 ## Technical Implementation
 
@@ -82,8 +75,6 @@ SQL techniques applied include:
 ### 2. Power BI Data Modelling and DAX
 
 Power BI Desktop was used to develop the sales dashboard. The data tables were connected through relationships so that sales measures could be analysed by product category, purchase date, and customer state.
-
-The following DAX measures were developed.
 
 **Total Item Sales Value**
 
@@ -131,7 +122,7 @@ DIVIDE(
 )
 ```
 
-Calculates average item sales value per delivered order. `DIVIDE()` is used to handle division safely when the denominator is zero or blank.
+Calculates average item sales value per delivered order. `DIVIDE()` handles division safely when the denominator is zero or blank.
 
 Using reusable DAX measures allows the sales metrics to respond to report filters and slicers, subject to the configured model relationships.
 
@@ -150,34 +141,43 @@ The dashboard includes:
 
 The dashboard combines summary KPIs with detailed charts to help users move from an overall view of performance to specific sales patterns.
 
-### Dashboard Preview
+## Executive Summary
 
-![Olist Sales Dashboard](olist_sales_dashboard.jpg)
+This project analyses the Brazilian E-Commerce Public Dataset by Olist to evaluate sales performance, identify high-performing product categories, and explore geographic sales distribution from 2016 to 2018. MySQL was used for data preparation and sales analysis, while Power BI Desktop was used to develop an interactive dashboard.
 
-## Key Findings
+### Overview of Findings
 
-The initial SQL analysis produced the following sales performance metrics.
+#### Sales Insights
 
-| Metric | Result |
-|---|---:|
-| Total Item Sales Value | R$13,221,498.11 |
-| Delivered Orders | 96,478 |
-| Total Order Items | 110,197 |
-| Average Order Value | R$137.04 |
+The initial SQL analysis recorded **R$13.22 million in total item sales value** across **96,478 delivered orders** and **110,197 order items**, with an average order value of **R$137.04**. These metrics provide a baseline overview of sales performance during the period covered by the dataset.
 
-### Top Five Product Categories by Item Sales Value
+At the product category level, **Health & Beauty** generated the highest item sales value at approximately **R$1.23 million**, followed by **Watches & Gifts** at R$1.17 million and **Bed Bath Table** at R$1.02 million. The top five categories collectively contributed approximately **39.83% of total item sales value**, indicating that these categories represented a substantial share of the platform's sales.
 
-| Rank | Product Category | Sales Value (BRL) | Share of Total |
-|---:|---|---:|---:|
-| 1 | Health & Beauty | R$1,233,131.72 | 9.33% |
-| 2 | Watches & Gifts | R$1,166,176.98 | 8.82% |
-| 3 | Bed Bath Table | R$1,023,434.76 | 7.74% |
-| 4 | Sports & Leisure | R$954,852.55 | 7.22% |
-| 5 | Computers & Accessories | R$888,724.61 | 6.72% |
+The dashboard also enables users to explore monthly sales patterns and compare sales distribution across Brazilian states. Further investigation of sales by year, order volume, average order value across categories, and geographic performance could help explain the factors behind the observed results.
 
-Together, these five categories account for approximately **39.83% of total item sales value**, indicating that a substantial share of sales comes from a relatively small group of categories.
+The reported sales figures represent item prices for delivered orders and exclude freight charges. They measure sales value rather than profit, as product costs and profit margins were not included in the calculations.
 
-These figures are baseline results from the SQL analysis. They should be reconciled with the final Power BI report if any filters, data-cleaning decisions, or model relationships differ.
+### Business Recommendations
+
+**1. Strengthen the performance of leading categories.** Health & Beauty, Watches & Gifts, and Bed Bath Table recorded the highest item sales values. The business could review product availability, customer demand, and marketing performance in these categories to identify opportunities to maintain or improve sales.
+
+**2. Investigate lower-performing product categories.** Compare categories with lower sales values to determine whether performance differences are associated with order volume, item prices, or customer demand before deciding whether changes to promotions or product offerings are appropriate.
+
+**3. Monitor order value and order volume together.** Track average order value alongside delivered order counts and total item sales value to distinguish changes associated with order volume from changes in spending per order.
+
+**4. Explore geographic sales opportunities.** Use the state-level sales map to identify regions with relatively high or low sales contributions. Combine these findings with customer counts, order volumes, and marketing costs before deciding where to focus promotional activities.
+
+**5. Investigate monthly and yearly sales patterns.** Compare sales across months and years to identify potential seasonality and changes in performance. Validate recurring patterns before using them to guide inventory planning or promotional timing.
+
+These recommendations are proposed areas for further investigation. Additional data and analysis would be needed to validate the opportunities and assess their potential business impact.
+
+### Interactive Power BI Dashboard
+
+
+
+The interactive Power BI dashboard combines summary metrics, category comparisons, and geographic visualisation to make sales performance easier to explore. The dashboard file can be downloaded [here](https://drive.google.com/file/d/1S9vMOBnVeD-Jqpp__08A2FAXToGaAEJm/view?usp=sharing).
+
+Download the `.pbix` file and open it in Power BI Desktop to explore the interactive report. Access depends on the Google Drive sharing settings.
 
 ## Project Workflow
 
@@ -187,8 +187,13 @@ These figures are baseline results from the SQL analysis. They should be reconci
 4. Join relevant tables and analyse sales performance using SQL.
 5. Create data relationships and DAX measures in Power BI.
 6. Develop an interactive dashboard.
-7. Present findings to support business understanding and decision-making.
+7. Interpret the findings and propose business recommendations.
+8. Document the project and publish the code and dashboard preview on GitHub.
 
 ## Author
 
-Janice Kek
+**Janice Kek Kai Lin**
+
+## Disclaimer
+
+This project was created for educational and portfolio purposes. The analysis is based on the publicly available Brazilian E-Commerce Public Dataset by Olist and is intended to demonstrate the application of SQL, data analysis, and business intelligence techniques. The findings and recommendations are for illustrative purposes and should not be considered professional business or financial advice.
